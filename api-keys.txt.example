@@ -1,0 +1,10 @@
+# Thêm API key của bạn vào file này
+# Mỗi dòng là một API key
+# Extension sẽ tự động chuyển đổi giữa các key khi key hiện tại hết request
+# Các dòng bắt đầu bằng # sẽ bị bỏ qua
+
+# Lấy API key tại: https://aistudio.google.com/api-keys
+
+AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+

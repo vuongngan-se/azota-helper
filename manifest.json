@@ -1,0 +1,80 @@
+{
+  "manifest_version": 3,
+  "name": "À Zố Tà",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "contextMenus",
+    "scripting",
+    "commands",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://azota.vn/*",
+    "https://elearning2.vku.udn.vn/*",
+    "https://generativelanguage.googleapis.com/*",
+    "https://storage.googleapis.com/*",
+    "file:///*",
+    "http://127.0.0.1:5500/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://azota.vn/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://elearning2.vku.udn.vn/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["http://127.0.0.1:5500/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "À Zố Tà",
+    "default_icon": "àzốtà.png"
+  },
+  "icons": {
+    "16": "àzốtà.png",
+    "48": "àzốtà.png",
+    "128": "àzốtà.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["gemini-api.js", "api-keys.txt", "api-key-manager.js"],
+      "matches": ["https://azota.vn/*", "https://elearning2.vku.udn.vn/*", "file:///*", "http://127.0.0.1:5500/*", "http://localhost/*"]
+    }
+  ],
+  "commands": {
+    "pause-extension": {
+      "suggested_key": {
+        "default": "Alt+2"
+      },
+      "description": "Tạm dừng extension"
+    },
+    "resume-extension": {
+      "suggested_key": {
+        "default": "Alt+3"
+      },
+      "description": "Tiếp tục extension"
+    },
+    "remove-overlay": {
+      "suggested_key": {
+        "default": "Alt+1"
+      },
+      "description": "Xoá overlay"
+    }
+  }
+}

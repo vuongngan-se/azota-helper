@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À Zố Tà</title>
+  <style>
+    body {
+      width: 350px;
+      padding: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      margin: 0;
+    }
+    
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    h1 {
+      text-align: center;
+      margin: 0 0 20px 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    
+    input[type="text"]:focus, input[type="password"]:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+    }
+    
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    
+    button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: #4CAF50;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #45a049;
+      transform: translateY(-1px);
+    }
+    
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .status {
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-align: center;
+      display: block;
+      min-height: 20px;
+      color: white;
+    }
+    
+    .status.success {
+      color: #90EE90;
+    }
+    
+    .status.error {
+      color: #FFB6C1;
+    }
+    
+    .status.info {
+      color: #87CEEB;
+    }
+    
+    .help-text {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+    
+    .shortcut-info {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .toggle-row label {
+      margin: 0;
+    }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 46px;
+      height: 24px;
+    }
+    .switch input { 
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255,255,255,0.3);
+      transition: .2s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .2s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: #4CAF50;
+    }
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+    
+    .api-key-info {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+    
+    .api-key-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    
+    .api-key-label {
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .api-key-status {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(76, 175, 80, 0.3);
+      color: #90EE90;
+      border: 1px solid rgba(76, 175, 80, 0.5);
+    }
+    
+    .api-key-status.error {
+      background: rgba(244, 67, 54, 0.3);
+      color: #FFB6C1;
+      border: 1px solid rgba(244, 67, 54, 0.5);
+    }
+    
+    .api-key-status.warning {
+      background: rgba(255, 152, 0, 0.3);
+      color: #FFCC80;
+      border: 1px solid rgba(255, 152, 0, 0.5);
+    }
+    
+    .api-key-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .key-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .key-index {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 11px;
+      min-width: 20px;
+      text-align: center;
+    }
+    
+    .key-preview {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.8);
+      background: rgba(0, 0, 0, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    
+    .key-stats {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🤖 À Zố Tà</h1>
+    
+    <div class="toggle-row">
+      <label for="minimalMode">Tắt thông báo</label>
+      <label class="switch">
+        <input type="checkbox" id="minimalMode" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="toggle-row">
+      <label for="azotaMode">Azota</label>
+      <label class="switch">
+        <input type="checkbox" id="azotaMode" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="toggle-row">
+      <label for="el2Mode">EL2</label>
+      <label class="switch">
+        <input type="checkbox" id="el2Mode">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="api-key-info">
+      <div class="api-key-header">
+        <span class="api-key-label">🔑 API Key hiện tại:</span>
+        <span class="api-key-status" id="apiKeyStatus">Đang tải...</span>
+      </div>
+      <div class="api-key-details">
+        <div class="key-info">
+          <span class="key-index" id="keyIndex">-</span>
+          <span class="key-preview" id="keyPreview">-</span>
+        </div>
+        <div class="key-stats">
+          <span class="total-keys" id="totalKeys">-</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button id="testBtn" class="btn-primary">Test API</button>
+    </div>
+    
+    <div id="status" class="status">📋 Sẵn sàng test API...</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
